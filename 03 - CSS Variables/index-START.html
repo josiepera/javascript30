@@ -21,7 +21,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root{
+      --base:#ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
 
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .h1 {
+      color: var(--base);
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -43,8 +57,21 @@
       width: 100px;
     }
   </style>
-
   <script>
+    const inputs = document.querySelectorAll('.controls input');//returns a nodelist
+
+    //now loop
+    function handleUpdate(){
+      //add the data attribute that is in the elements
+      //dataset is an object that contain the data attributes
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+
+    //now listen for a change event on each of the inputs
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    //mousemove allows you to change every movement of the meter without letting go
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
   </script>
 
 </body>

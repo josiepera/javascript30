@@ -129,15 +129,18 @@
       this.classList.toggle('open');
     }
 
-    function toggleActive(){
-      this.classList.toggle('open-active')
+    function toggleActive(e){
+    //if property name name includes flex then toggle class
+      if(e.propertyName.includes('flex')){
+        this.classList.toggle('open-active')
+      }
     }
 
     panels.forEach(panel => panel.addEventListener('click', toggleOpen))
       //take each panel, loop over each, listen for a click event and run toggleOpen function
       //no () after toggleOpen so it doesnt run when page loads
 
-    panels.forEach(panel => panel.addEventListener('transitioned',
+    panels.forEach(panel => panel.addEventListener('transitionend',
     toggleActive))
 
   </script>

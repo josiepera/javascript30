@@ -31,6 +31,7 @@
     console.log(e)
 
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.lineWidth = hue;
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX, e.offsetY);
@@ -39,7 +40,11 @@
     // lastX = e.offsetX;//reset the lastX and y from 0
     // lastY = e.offsetY;
     [lastX, lastY] = [e.offsetX, e.offsetY];//es6 version, destructuring an array
+
     hue++ //increment the hue
+    if(hue >= 360){//reset hue when hue reaches last color
+      hue = 0
+    }
   }
 
   //event listeners to when mouse is down and moving

@@ -27,6 +27,12 @@
     //called whenever i move mouse on top of Canvas
     if(!isDrawing) return;// stop the function from running when they are not moused down
     console.log(e)
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke()
+    
   }
 
   //event listeners to when mouse is down and moving
@@ -34,6 +40,7 @@
   canvas.addEventListener('mousedown', () => isDrawing = true );
   canvas.addEventListener('mouseup', () => isDrawing = false );
   canvas.addEventListener('mouseout', () => isDrawing = false);//when mouse moves off screen
+
 
 </script>
 

@@ -31,13 +31,21 @@
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke()
-    
+    ctx.stroke();
+
+    // lastX = e.offsetX;//reset the lastX and y from 0
+    // lastY = e.offsetY;
+    [lastX, lastY] = [e.offsetX, e.offsetY];//es6 version, destructuring an array
   }
 
   //event listeners to when mouse is down and moving
+  canvas.addEventListener('mousedown', (e) => {
+    //mousedown happens before move mouse,
+    //then we will update lastX and lastY
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+   });
   canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mousedown', () => isDrawing = true );
   canvas.addEventListener('mouseup', () => isDrawing = false );
   canvas.addEventListener('mouseout', () => isDrawing = false);//when mouse moves off screen
 

@@ -7,6 +7,20 @@
 </head>
 <body>
 <script>
+const pressed = [];
+const secretCode = 'jzph';
+
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    //put in max of array and start the count of items in array from the end
+    if(pressed.join('').includes(secretCode)){
+      console.log("DING DING");
+      cornify_add();
+    }//check if array contains secret code
+    console.log(pressed);
+  })
 </script>
 </body>
 </html>

@@ -13,18 +13,24 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players
 
+    console.log(players, team)
     // You might think we can just do something like this:
-
+    team[3] = "lex luther"
     // however what happens when we update that array?
-
+    console.log(players, team)
     // now here is the problem!
+
+
 
     // oh no - we have edited the original array too!
 
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
+    const team2 = players.slice()
+        //make a copy of array 
 
     // one way
 
